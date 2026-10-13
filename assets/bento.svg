@@ -5,14 +5,14 @@
     .a { animation-delay: .05s } .b { animation-delay: .15s } .c { animation-delay: .25s } .d { animation-delay: .35s }
     @keyframes up { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: none } }
     @media (prefers-reduced-motion: reduce) { .t { animation: none; opacity: 1 } }
-    .tile { fill: #FFFFFF; }
-    .label { font-size: 15px; font-weight: 600; letter-spacing: 1px; fill: #AAAAAA; }
-    .big { font-size: 42px; font-weight: 700; letter-spacing: -1.1px; fill: #1D1D1F; }
-    .green { fill: #1F9D45; } .red { fill: #E0261B; } .mark { fill: #FFCC00; }
-    .small { font-size: 17px; font-weight: 500; fill: #6E6E73; }
+    .tile { fill: #2C2C2E; }
+    .label { font-size: 15px; font-weight: 600; letter-spacing: 1px; fill: #8E8E93; }
+    .big { font-size: 42px; font-weight: 700; letter-spacing: -1.1px; fill: #F5F5F7; }
+    .green { fill: #30D158; } .red { fill: #FF453A; } .mark { fill: #FFD60A; }
+    .small { font-size: 17px; font-weight: 500; fill: #AAAAAA; }
   </style>
 
-  <rect width="1200" height="620" rx="28" fill="#F5F5F7"/>
+  <rect width="1200" height="620" rx="28" fill="#1D1D1F"/>
 
   <!-- Développement -->
   <g class="t a">
@@ -37,7 +37,7 @@
     <rect class="tile" x="20" y="320" width="440" height="280" rx="22"/>
     <text class="label" x="60" y="372">INTELLIGENCE ARTIFICIELLE</text>
     <text class="big" x="60" y="450">L’IA, mon</text>
-    <rect class="mark" x="52" y="463" width="232" height="50" rx="6"/><text class="big" x="60" y="500">coéquipier.</text>
+    <rect class="mark" x="52" y="463" width="232" height="50" rx="6"/><text class="big" x="60" y="500" style="fill:#1D1D1F">coéquipier.</text>
     <text class="small" x="60" y="560">Onze outils au quotidien, détaillés plus bas.</text>
   </g>
 

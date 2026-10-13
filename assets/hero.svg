@@ -8,12 +8,12 @@
     @media (prefers-reduced-motion: reduce) { .f { animation: none; opacity: 1 } }
   </style>
 
-  <rect width="1200" height="440" rx="28" fill="#F5F5F7"/>
+  <rect width="1200" height="440" rx="28" fill="#1D1D1F"/>
 
-  <text class="f d1" x="600" y="92" text-anchor="middle" font-size="20" font-weight="600" letter-spacing=".4" fill="#6E6E73">Jeff Bizo</text>
-  <text class="f d2" x="600" y="184" text-anchor="middle" font-size="82" font-weight="700" letter-spacing="-2.4" fill="#1D1D1F">Le code. La paie.</text>
-  <text class="f d3" x="600" y="276" text-anchor="middle" font-size="82" font-weight="700" letter-spacing="-2.4" fill="#1F9D45">Enfin réunis.</text>
-  <text class="f d4" x="600" y="338" text-anchor="middle" font-size="23" font-weight="500" fill="#6E6E73">Développeur full-stack et alternant RH &amp; gestionnaire de paie.</text>
-  <text class="f d5" x="600" y="371" text-anchor="middle" font-size="23" font-weight="500" fill="#6E6E73">Je conçois les outils que j’aurais aimé avoir, avec l’IA comme coéquipier.</text>
-  <text class="f d6" x="600" y="414" text-anchor="middle" font-size="14" font-weight="600" letter-spacing="1.2" fill="#AAAAAA">TYPESCRIPT · REACT · NODE · PRISMA · POSTGRESQL</text>
+  <text class="f d1" x="600" y="92" text-anchor="middle" font-size="20" font-weight="600" letter-spacing=".4" fill="#AAAAAA">Jeff Bizo</text>
+  <text class="f d2" x="600" y="184" text-anchor="middle" font-size="82" font-weight="700" letter-spacing="-2.4" fill="#F5F5F7">Le code. La paie.</text>
+  <text class="f d3" x="600" y="276" text-anchor="middle" font-size="82" font-weight="700" letter-spacing="-2.4" fill="#30D158">Enfin réunis.</text>
+  <text class="f d4" x="600" y="338" text-anchor="middle" font-size="23" font-weight="500" fill="#AAAAAA">Développeur full-stack et alternant RH &amp; gestionnaire de paie.</text>
+  <text class="f d5" x="600" y="371" text-anchor="middle" font-size="23" font-weight="500" fill="#AAAAAA">Je conçois les outils que j’aurais aimé avoir, avec l’IA comme coéquipier.</text>
+  <text class="f d6" x="600" y="414" text-anchor="middle" font-size="14" font-weight="600" letter-spacing="1.2" fill="#8E8E93">TYPESCRIPT · REACT · NODE · PRISMA · POSTGRESQL</text>
 </svg>

@@ -6,7 +6,7 @@
     @keyframes up { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }
     @media (prefers-reduced-motion: reduce) { .f { animation: none; opacity: 1 } }
   </style>
-  <rect width="1200" height="240" rx="28" fill="#F5F5F7"/>
-  <text class="f d1" x="600" y="124" text-anchor="middle" font-size="72" font-weight="700" letter-spacing="-2" fill="#1D1D1F">Parlons-en.</text>
-  <text class="f d2" x="600" y="176" text-anchor="middle" font-size="23" font-weight="500" fill="#6E6E73">Un projet, une alternance, une idée ?</text>
+  <rect width="1200" height="240" rx="28" fill="#1D1D1F"/>
+  <text class="f d1" x="600" y="124" text-anchor="middle" font-size="72" font-weight="700" letter-spacing="-2" fill="#F5F5F7">Parlons-en.</text>
+  <text class="f d2" x="600" y="176" text-anchor="middle" font-size="23" font-weight="500" fill="#AAAAAA">Un projet, une alternance, une idée ?</text>
 </svg>

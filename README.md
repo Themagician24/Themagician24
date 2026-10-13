@@ -29,7 +29,7 @@
 <h3 align="center">Les outils du quotidien.</h3>
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=ts,react,vite,tailwind,nodejs,express,prisma,postgres,docker,git,vercel,figma&theme=light&perline=12" />
+  <img src="https://skillicons.dev/icons?i=ts,react,vite,tailwind,nodejs,express,prisma,postgres,docker,git,vercel,figma&theme=dark&perline=12" />
 </p>
 
 <br />
@@ -37,7 +37,7 @@
 <h3 align="center">En activité.</h3>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=Themagician24&background=F5F5F7&border_radius=24&hide_border=true&stroke=E5E5EA&ring=1F9D45&fire=E0261B&currStreakNum=1D1D1F&sideNums=1D1D1F&currStreakLabel=1F9D45&sideLabels=6E6E73&dates=AAAAAA" height="170" />
+  <img src="https://streak-stats.demolab.com?user=Themagician24&background=1D1D1F&border_radius=24&hide_border=true&stroke=3A3A3C&ring=30D158&fire=FF453A&currStreakNum=F5F5F7&sideNums=F5F5F7&currStreakLabel=30D158&sideLabels=AAAAAA&dates=8E8E93" height="170" />
 </p>
 
 <p align="center">

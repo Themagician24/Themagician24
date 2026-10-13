@@ -5,19 +5,19 @@
     .c1 { animation-delay: .05s } .c2 { animation-delay: .15s } .c3 { animation-delay: .25s } .c4 { animation-delay: .35s }
     @keyframes up { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: none } }
     @media (prefers-reduced-motion: reduce) { .t { animation: none; opacity: 1 } }
-    .col { fill: #FFFFFF; }
-    .cat { font-size: 15px; font-weight: 600; letter-spacing: 1px; fill: #1D1D1F; }
-    .name { font-size: 26px; font-weight: 700; letter-spacing: -.5px; fill: #1D1D1F; }
-    .use { font-size: 16px; font-weight: 500; fill: #6E6E73; }
-    .rule { stroke: #E5E5EA; stroke-width: 1; }
+    .col { fill: #2C2C2E; }
+    .cat { font-size: 15px; font-weight: 600; letter-spacing: 1px; fill: #F5F5F7; }
+    .name { font-size: 26px; font-weight: 700; letter-spacing: -.5px; fill: #F5F5F7; }
+    .use { font-size: 16px; font-weight: 500; fill: #AAAAAA; }
+    .rule { stroke: #3A3A3C; stroke-width: 1; }
   </style>
 
-  <rect width="1200" height="390" rx="28" fill="#F5F5F7"/>
+  <rect width="1200" height="390" rx="28" fill="#1D1D1F"/>
 
   <!-- Code -->
   <g class="t c1">
     <rect class="col" x="20" y="20" width="275" height="350" rx="22"/>
-    <rect x="48" y="54" width="12" height="12" rx="3" fill="#1F9D45"/><text class="cat" x="70" y="66">CODE</text>
+    <rect x="48" y="54" width="12" height="12" rx="3" fill="#30D158"/><text class="cat" x="70" y="66">CODE</text>
     <text class="name" x="48" y="124">Claude Code</text><text class="use" x="48" y="150">Développement</text>
     <line class="rule" x1="48" y1="178" x2="267" y2="178"/>
     <text class="name" x="48" y="222">CodeRabbit</text><text class="use" x="48" y="248">Revue de code</text>
@@ -28,7 +28,7 @@
   <!-- Réflexion -->
   <g class="t c2">
     <rect class="col" x="315" y="20" width="275" height="350" rx="22"/>
-    <rect x="343" y="54" width="12" height="12" rx="3" fill="#FFCC00"/><text class="cat" x="365" y="66">RÉFLEXION</text>
+    <rect x="343" y="54" width="12" height="12" rx="3" fill="#FFD60A"/><text class="cat" x="365" y="66">RÉFLEXION</text>
     <text class="name" x="343" y="124">Claude</text><text class="use" x="343" y="150">Analyse &amp; rédaction</text>
     <line class="rule" x1="343" y1="178" x2="562" y2="178"/>
     <text class="name" x="343" y="222">ChatGPT</text><text class="use" x="343" y="248">Recherche &amp; idées</text>
@@ -37,7 +37,7 @@
   <!-- Création -->
   <g class="t c3">
     <rect class="col" x="610" y="20" width="275" height="350" rx="22"/>
-    <rect x="638" y="54" width="12" height="12" rx="3" fill="#E0261B"/><text class="cat" x="660" y="66">CRÉATION</text>
+    <rect x="638" y="54" width="12" height="12" rx="3" fill="#FF453A"/><text class="cat" x="660" y="66">CRÉATION</text>
     <text class="name" x="638" y="124">Midjourney</text><text class="use" x="638" y="150">Création d’images</text>
     <line class="rule" x1="638" y1="178" x2="857" y2="178"/>
     <text class="name" x="638" y="222">Figma</text><text class="use" x="638" y="248">Design d’interfaces</text>
@@ -48,7 +48,7 @@
   <!-- Production -->
   <g class="t c4">
     <rect class="col" x="905" y="20" width="275" height="350" rx="22"/>
-    <rect x="933" y="54" width="12" height="12" rx="3" fill="#1F9D45"/><text class="cat" x="955" y="66">PRODUCTION</text>
+    <rect x="933" y="54" width="12" height="12" rx="3" fill="#30D158"/><text class="cat" x="955" y="66">PRODUCTION</text>
     <text class="name" x="933" y="124">Gamma</text><text class="use" x="933" y="150">Présentations</text>
     <line class="rule" x1="933" y1="178" x2="1152" y2="178"/>
     <text class="name" x="933" y="222">Notion AI</text><text class="use" x="933" y="248">Organisation</text>
