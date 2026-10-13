@@ -1,49 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="530" viewBox="0 0 1200 530" role="img" aria-label="Mes IA au quotidien : Claude Code, Claude, CodeRabbit, Gemini, Figma, Gamma, Canva, Notion AI, Descript.">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="390" viewBox="0 0 1200 390" role="img" aria-label="Mes IA au quotidien. Code : Claude Code, CodeRabbit, Gemini. Réflexion : Claude, ChatGPT. Création : Midjourney, Figma, Canva. Production : Gamma, Notion AI, Descript.">
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-    .t { opacity: 0; animation: up .9s cubic-bezier(.22, 1, .36, 1) forwards; }
-    .a1 { animation-delay: .05s } .a2 { animation-delay: .13s } .a3 { animation-delay: .21s }
-    .a4 { animation-delay: .29s } .a5 { animation-delay: .37s } .a6 { animation-delay: .45s }
-    .a7 { animation-delay: .53s } .a8 { animation-delay: .61s } .a9 { animation-delay: .69s }
-    @keyframes up { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: none } }
+    .t { opacity: 0; animation: up .8s cubic-bezier(.22, 1, .36, 1) forwards; }
+    .c1 { animation-delay: .05s } .c2 { animation-delay: .15s } .c3 { animation-delay: .25s } .c4 { animation-delay: .35s }
+    @keyframes up { from { opacity: 0; transform: translateY(14px) } to { opacity: 1; transform: none } }
     @media (prefers-reduced-motion: reduce) { .t { animation: none; opacity: 1 } }
-    .card { fill: #1C1C1E; }
-    .name { font-size: 32px; font-weight: 700; letter-spacing: -.6px; fill: #F5F5F7; }
-    .use { font-size: 18px; font-weight: 500; fill: #86868B; }
+    .col { fill: #FFFFFF; }
+    .cat { font-size: 15px; font-weight: 600; letter-spacing: 1px; fill: #007AFF; }
+    .name { font-size: 26px; font-weight: 700; letter-spacing: -.5px; fill: #1D1D1F; }
+    .use { font-size: 16px; font-weight: 500; fill: #6E6E73; }
+    .rule { stroke: #E5E5EA; stroke-width: 1; }
   </style>
 
-  <rect width="1200" height="530" rx="32" fill="#000"/>
+  <rect width="1200" height="390" rx="28" fill="#F5F5F7"/>
 
-  <!-- Ligne 1 -->
-  <g class="t a1"><rect class="card" x="20" y="20" width="373" height="150" rx="22"/>
-    <circle cx="56" cy="56" r="8" fill="#D97757"/>
-    <text class="name" x="48" y="118">Claude Code</text><text class="use" x="48" y="148">Développement</text></g>
-  <g class="t a2"><rect class="card" x="413" y="20" width="374" height="150" rx="22"/>
-    <circle cx="449" cy="56" r="8" fill="#F0A47A"/>
-    <text class="name" x="441" y="118">Claude</text><text class="use" x="441" y="148">Réflexion &amp; rédaction</text></g>
-  <g class="t a3"><rect class="card" x="807" y="20" width="373" height="150" rx="22"/>
-    <circle cx="843" cy="56" r="8" fill="#FF570A"/>
-    <text class="name" x="835" y="118">CodeRabbit</text><text class="use" x="835" y="148">Revue de code</text></g>
+  <!-- Code -->
+  <g class="t c1">
+    <rect class="col" x="20" y="20" width="275" height="350" rx="22"/>
+    <text class="cat" x="48" y="66">CODE</text>
+    <text class="name" x="48" y="124">Claude Code</text><text class="use" x="48" y="150">Développement</text>
+    <line class="rule" x1="48" y1="178" x2="267" y2="178"/>
+    <text class="name" x="48" y="222">CodeRabbit</text><text class="use" x="48" y="248">Revue de code</text>
+    <line class="rule" x1="48" y1="276" x2="267" y2="276"/>
+    <text class="name" x="48" y="320">Gemini</text><text class="use" x="48" y="346">IA dans mes applis</text>
+  </g>
 
-  <!-- Ligne 2 -->
-  <g class="t a4"><rect class="card" x="20" y="190" width="373" height="150" rx="22"/>
-    <circle cx="56" cy="226" r="8" fill="#4C8DF6"/>
-    <text class="name" x="48" y="288">Gemini</text><text class="use" x="48" y="318">IA dans mes applis</text></g>
-  <g class="t a5"><rect class="card" x="413" y="190" width="374" height="150" rx="22"/>
-    <circle cx="449" cy="226" r="8" fill="#A259FF"/>
-    <text class="name" x="441" y="288">Figma</text><text class="use" x="441" y="318">Design d’interfaces</text></g>
-  <g class="t a6"><rect class="card" x="807" y="190" width="373" height="150" rx="22"/>
-    <circle cx="843" cy="226" r="8" fill="#BF5AF2"/>
-    <text class="name" x="835" y="288">Gamma</text><text class="use" x="835" y="318">Présentations</text></g>
+  <!-- Réflexion -->
+  <g class="t c2">
+    <rect class="col" x="315" y="20" width="275" height="350" rx="22"/>
+    <text class="cat" x="343" y="66">RÉFLEXION</text>
+    <text class="name" x="343" y="124">Claude</text><text class="use" x="343" y="150">Analyse &amp; rédaction</text>
+    <line class="rule" x1="343" y1="178" x2="562" y2="178"/>
+    <text class="name" x="343" y="222">ChatGPT</text><text class="use" x="343" y="248">Recherche &amp; idées</text>
+  </g>
 
-  <!-- Ligne 3 -->
-  <g class="t a7"><rect class="card" x="20" y="360" width="373" height="150" rx="22"/>
-    <circle cx="56" cy="396" r="8" fill="#00C4CC"/>
-    <text class="name" x="48" y="458">Canva</text><text class="use" x="48" y="488">Visuels</text></g>
-  <g class="t a8"><rect class="card" x="413" y="360" width="374" height="150" rx="22"/>
-    <circle cx="449" cy="396" r="8" fill="#F5F5F7"/>
-    <text class="name" x="441" y="458">Notion AI</text><text class="use" x="441" y="488">Organisation</text></g>
-  <g class="t a9"><rect class="card" x="807" y="360" width="373" height="150" rx="22"/>
-    <circle cx="843" cy="396" r="8" fill="#2997FF"/>
-    <text class="name" x="835" y="458">Descript</text><text class="use" x="835" y="488">Montage vidéo</text></g>
+  <!-- Création -->
+  <g class="t c3">
+    <rect class="col" x="610" y="20" width="275" height="350" rx="22"/>
+    <text class="cat" x="638" y="66">CRÉATION</text>
+    <text class="name" x="638" y="124">Midjourney</text><text class="use" x="638" y="150">Création d’images</text>
+    <line class="rule" x1="638" y1="178" x2="857" y2="178"/>
+    <text class="name" x="638" y="222">Figma</text><text class="use" x="638" y="248">Design d’interfaces</text>
+    <line class="rule" x1="638" y1="276" x2="857" y2="276"/>
+    <text class="name" x="638" y="320">Canva</text><text class="use" x="638" y="346">Visuels</text>
+  </g>
+
+  <!-- Production -->
+  <g class="t c4">
+    <rect class="col" x="905" y="20" width="275" height="350" rx="22"/>
+    <text class="cat" x="933" y="66">PRODUCTION</text>
+    <text class="name" x="933" y="124">Gamma</text><text class="use" x="933" y="150">Présentations</text>
+    <line class="rule" x1="933" y1="178" x2="1152" y2="178"/>
+    <text class="name" x="933" y="222">Notion AI</text><text class="use" x="933" y="248">Organisation</text>
+    <line class="rule" x1="933" y1="276" x2="1152" y2="276"/>
+    <text class="name" x="933" y="320">Descript</text><text class="use" x="933" y="346">Montage vidéo</text>
+  </g>
 </svg>

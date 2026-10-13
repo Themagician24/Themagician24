@@ -1,36 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="460" viewBox="0 0 1200 460" role="img" aria-label="Jeff Bizo. Le code. La paie. Enfin réunis. Développeur full-stack et alternant RH et gestionnaire de paie.">
-  <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0" spreadMethod="reflect">
-      <stop offset="0" stop-color="#2997FF"/>
-      <stop offset=".35" stop-color="#BF5AF2"/>
-      <stop offset=".7" stop-color="#FF375F"/>
-      <stop offset="1" stop-color="#FF9F0A"/>
-      <animateTransform attributeName="gradientTransform" type="translate" values="0 0;-0.6 0;0 0" dur="12s" repeatCount="indefinite"/>
-    </linearGradient>
-    <radialGradient id="light" cx=".5" cy="-.15" r=".75">
-      <stop offset="0" stop-color="#2997FF" stop-opacity=".22"/>
-      <stop offset="1" stop-color="#2997FF" stop-opacity="0"/>
-    </radialGradient>
-    <clipPath id="card"><rect width="1200" height="460" rx="32"/></clipPath>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-label="Jeff Bizo. Le code. La paie. Enfin réunis. Développeur full-stack et alternant RH et gestionnaire de paie.">
   <style>
     text { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif; }
-    .f { opacity: 0; animation: up 1.1s cubic-bezier(.22, 1, .36, 1) forwards; }
-    .d1 { animation-delay: .1s } .d2 { animation-delay: .3s } .d3 { animation-delay: .55s }
-    .d4 { animation-delay: .8s } .d5 { animation-delay: .95s } .d6 { animation-delay: 1.15s }
-    @keyframes up { from { opacity: 0; transform: translateY(18px) } to { opacity: 1; transform: none } }
+    .f { opacity: 0; animation: up .8s cubic-bezier(.22, 1, .36, 1) forwards; }
+    .d1 { animation-delay: .05s } .d2 { animation-delay: .15s } .d3 { animation-delay: .25s }
+    .d4 { animation-delay: .4s } .d5 { animation-delay: .5s } .d6 { animation-delay: .6s }
+    @keyframes up { from { opacity: 0; transform: translateY(12px) } to { opacity: 1; transform: none } }
     @media (prefers-reduced-motion: reduce) { .f { animation: none; opacity: 1 } }
   </style>
 
-  <g clip-path="url(#card)">
-    <rect width="1200" height="460" fill="#000"/>
-    <rect width="1200" height="460" fill="url(#light)"/>
-  </g>
+  <rect width="1200" height="440" rx="28" fill="#F5F5F7"/>
 
-  <text class="f d1" x="600" y="96" text-anchor="middle" font-size="20" font-weight="600" letter-spacing=".5" fill="#86868B">Jeff Bizo</text>
-  <text class="f d2" x="600" y="190" text-anchor="middle" font-size="84" font-weight="700" letter-spacing="-2.5" fill="#F5F5F7">Le code. La paie.</text>
-  <text class="f d3" x="600" y="284" text-anchor="middle" font-size="84" font-weight="700" letter-spacing="-2.5" fill="url(#g)">Enfin réunis.</text>
-  <text class="f d4" x="600" y="348" text-anchor="middle" font-size="24" font-weight="500" fill="#A1A1A6">Développeur full-stack et alternant RH &amp; gestionnaire de paie.</text>
-  <text class="f d5" x="600" y="382" text-anchor="middle" font-size="24" font-weight="500" fill="#A1A1A6">Je conçois les outils que j’aurais aimé avoir, avec l’IA comme coéquipier.</text>
-  <text class="f d6" x="600" y="430" text-anchor="middle" font-size="15" font-weight="500" letter-spacing="1" fill="#6E6E73">TYPESCRIPT · REACT · NODE · PRISMA · CLAUDE CODE</text>
+  <text class="f d1" x="600" y="92" text-anchor="middle" font-size="20" font-weight="600" letter-spacing=".4" fill="#6E6E73">Jeff Bizo</text>
+  <text class="f d2" x="600" y="184" text-anchor="middle" font-size="82" font-weight="700" letter-spacing="-2.4" fill="#1D1D1F">Le code. La paie.</text>
+  <text class="f d3" x="600" y="276" text-anchor="middle" font-size="82" font-weight="700" letter-spacing="-2.4" fill="#007AFF">Enfin réunis.</text>
+  <text class="f d4" x="600" y="338" text-anchor="middle" font-size="23" font-weight="500" fill="#6E6E73">Développeur full-stack et alternant RH &amp; gestionnaire de paie.</text>
+  <text class="f d5" x="600" y="371" text-anchor="middle" font-size="23" font-weight="500" fill="#6E6E73">Je conçois les outils que j’aurais aimé avoir, avec l’IA comme coéquipier.</text>
+  <text class="f d6" x="600" y="414" text-anchor="middle" font-size="14" font-weight="600" letter-spacing="1.2" fill="#AAAAAA">TYPESCRIPT · REACT · NODE · PRISMA · POSTGRESQL</text>
 </svg>

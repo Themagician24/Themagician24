@@ -13,7 +13,7 @@
 <h3 align="center">Mon studio IA.</h3>
 
 <p align="center">
-  <img src="assets/ai-studio.svg" width="100%" alt="Claude Code, Claude, CodeRabbit, Gemini, Figma, Gamma, Canva, Notion AI, Descript" />
+  <img src="assets/ai-studio.svg" width="100%" alt="Claude Code, CodeRabbit, Gemini, Claude, ChatGPT, Midjourney, Figma, Canva, Gamma, Notion AI, Descript" />
 </p>
 
 <br />
@@ -29,7 +29,7 @@
 <h3 align="center">Les outils du quotidien.</h3>
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=ts,react,vite,tailwind,nodejs,express,prisma,postgres,docker,git,vercel,figma&theme=dark&perline=12" />
+  <img src="https://skillicons.dev/icons?i=ts,react,vite,tailwind,nodejs,express,prisma,postgres,docker,git,vercel,figma&theme=light&perline=12" />
 </p>
 
 <br />
@@ -37,12 +37,12 @@
 <h3 align="center">En activité.</h3>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=Themagician24&background=000000&border_radius=24&hide_border=true&stroke=1C1C1E&ring=2997FF&fire=BF5AF2&currStreakNum=F5F5F7&sideNums=F5F5F7&currStreakLabel=2997FF&sideLabels=86868B&dates=6E6E73" height="170" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Themagician24&layout=compact&bg_color=000000&title_color=F5F5F7&text_color=86868B&hide_border=true&border_radius=24" height="170" />
+  <img src="https://streak-stats.demolab.com?user=Themagician24&background=F5F5F7&border_radius=24&hide_border=true&stroke=E5E5EA&ring=007AFF&fire=007AFF&currStreakNum=1D1D1F&sideNums=1D1D1F&currStreakLabel=007AFF&sideLabels=6E6E73&dates=AAAAAA" height="170" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Themagician24&layout=compact&bg_color=F5F5F7&title_color=1D1D1F&text_color=6E6E73&hide_border=true&border_radius=24&langs_count=6" height="170" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Themagician24&bg_color=000000&color=86868B&line=2997FF&point=F5F5F7&area=true&area_color=2997FF&hide_border=true&radius=24&title_color=F5F5F7" width="100%" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Themagician24&bg_color=F5F5F7&color=6E6E73&line=007AFF&point=1D1D1F&hide_border=true&radius=24&title_color=1D1D1F" width="100%" />
 </p>
 
 <p align="center">
