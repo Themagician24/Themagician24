@@ -37,12 +37,12 @@
 <h3 align="center">En activité.</h3>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=Themagician24&background=F5F5F7&border_radius=24&hide_border=true&stroke=E5E5EA&ring=007AFF&fire=007AFF&currStreakNum=1D1D1F&sideNums=1D1D1F&currStreakLabel=007AFF&sideLabels=6E6E73&dates=AAAAAA" height="170" />
+  <img src="https://streak-stats.demolab.com?user=Themagician24&background=F5F5F7&border_radius=24&hide_border=true&stroke=E5E5EA&ring=1F9D45&fire=E0261B&currStreakNum=1D1D1F&sideNums=1D1D1F&currStreakLabel=1F9D45&sideLabels=6E6E73&dates=AAAAAA" height="170" />
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Themagician24&layout=compact&bg_color=F5F5F7&title_color=1D1D1F&text_color=6E6E73&hide_border=true&border_radius=24&langs_count=6" height="170" />
 </p>
 
 <p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Themagician24&bg_color=F5F5F7&color=6E6E73&line=007AFF&point=1D1D1F&hide_border=true&radius=24&title_color=1D1D1F" width="100%" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Themagician24&bg_color=F5F5F7&color=6E6E73&line=1F9D45&point=E0261B&hide_border=true&radius=24&title_color=1D1D1F" width="100%" />
 </p>
 
 <p align="center">
