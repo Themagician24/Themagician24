@@ -20,9 +20,11 @@
 
 <h3 align="center">Les idées prennent vie.</h3>
 
+<!-- video:start -->
 <p align="center">
-  <img src="assets/showreel.webp" width="100%" alt="" />
+  <img src="assets/videos/lone-sniper.webp" width="100%" alt="" />
 </p>
+<!-- video:end -->
 
 <br />
 
