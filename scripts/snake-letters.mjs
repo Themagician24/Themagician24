@@ -235,92 +235,146 @@ const midY = cy(FINAL_ROW);
 const fadeGrid = anim('opacity', [1, 1, 0.07, 0.07, 1], [0, REVEAL - 0.2, REVEAL + 0.3, TOTAL - 0.3, TOTAL]);
 const flash = `<rect width="${W}" height="${H}" rx="28" fill="${C.text}" opacity="0">` +
   anim('opacity', [0, 0, 0.16, 0, 0, 0.12, 0, 0], [0, REVEAL, REVEAL + 0.06, REVEAL + 0.4, FINALE, FINALE + 0.06, FINALE + 0.4, TOTAL]) + `</rect>`;
-// Écran de victoire : panneau opaque, tampon « NIVEAU TERMINÉ », nom lettre par lettre,
-// soulignés, confettis, étoiles, bilan et compte à rebours avant la partie suivante.
+// Écran de victoire, mise en scène cinéma : bandes noires, rayons lents, ornements,
+// nom tracé au trait puis rempli, reflet lumineux, étincelles, score qui défile.
 const F = FINALE;
 const END = TOTAL - 0.35;
-const appear = (t0, t1 = END) => anim('opacity', [0, 0, 1, 1, 0, 0], [0, t0, t0 + 0.2, t1, t1 + 0.25, TOTAL]);
+const show = (t0, t1 = END) => anim('opacity', [0, 0, 1, 1, 0, 0], [0, t0, t0 + 0.25, t1, t1 + 0.25, TOTAL]);
+const CXF = W / 2;
 
+// Fond opaque + légère mise au point de « caméra »
 const panel = `<rect width="${W}" height="${H}" rx="28" fill="${C.bg}" opacity="0">` +
   anim('opacity', [0, 0, 1, 1, 0], [0, F, F + 0.3, END, TOTAL]) + `</rect>`;
 
-const BADGE_Y = 54;
-const badge = `<g transform="translate(${W / 2} ${BADGE_Y})"><g opacity="0">${appear(F + 0.1)}` +
-  tr('scale', [2.4, 2.4, 0.92, 1.04, 1, 1], [0, F + 0.1, F + 0.32, F + 0.42, F + 0.5, TOTAL]) +
-  `<rect x="-150" y="-19" width="300" height="38" rx="19" fill="${C.snake}"/>` +
-  `<text y="6" class="badge">NIVEAU TERMINÉ</text></g></g>`;
+// Rayons qui tournent lentement derrière le nom
+const RAYS_Y = 156;
+let wedges = '';
+for (let i = 0; i < 18; i++) {
+  const a0 = (i / 18) * Math.PI * 2;
+  const a1 = a0 + Math.PI / 18;
+  const R = 640;
+  wedges += `M0 0 L${(Math.cos(a0) * R).toFixed(0)} ${(Math.sin(a0) * R).toFixed(0)} L${(Math.cos(a1) * R).toFixed(0)} ${(Math.sin(a1) * R).toFixed(0)} Z `;
+}
+const rays = `<g transform="translate(${CXF} ${RAYS_Y})"><g opacity="0">${anim('opacity', [0, 0, 1, 1, 0, 0], [0, F + 0.2, F + 1.2, END, END + 0.25, TOTAL])}` +
+  `<path d="${wedges}" fill="#242426"><animateTransform attributeName="transform" type="rotate" values="0;360" dur="40s" repeatCount="indefinite"/></path></g></g>`;
 
-const ADV = 44;
-const dropWord = (label, y, color, start) => {
-  let out = '';
-  const x0 = W / 2 - ((label.length - 1) * ADV) / 2;
-  [...label].forEach((ch, i) => {
-    if (ch === ' ') return;
-    const t = start + i * 0.06;
-    const wave = F + 3.3 + i * 0.05 + (y > 200 ? 0.25 : 0);
-    out += `<g transform="translate(${x0 + i * ADV} ${y})"><g opacity="0">${appear(t)}` +
-      tr('translate', ['0 -46', '0 -46', '0 7', '0 -3', '0 0', '0 0', '0 -12', '0 0', '0 0'],
-        [0, t, t + 0.22, t + 0.32, t + 0.4, wave, wave + 0.12, wave + 0.26, TOTAL]) +
-      `<text class="big" fill="${color}">${ch}</text></g></g>`;
-  });
-  // Soulignement qui se trace depuis le centre
-  const half = ((label.length - 1) * ADV) / 2 + 22;
-  const u = start + label.length * 0.06;
-  out += `<rect x="${W / 2}" y="${y + 16}" width="0" height="4" rx="2" fill="${color}" opacity="0">` +
-    appear(u) + anim('width', [0, 0, half * 2, half * 2], [0, u, u + 0.35, TOTAL]) +
-    anim('x', [W / 2, W / 2, W / 2 - half, W / 2 - half], [0, u, u + 0.35, TOTAL]) + `</rect>`;
-  return out;
+// Bandes noires façon cinéma
+const BAR = 24;
+const bars = `<rect x="0" y="0" width="${W}" height="${BAR}" fill="#000" opacity="0">${show(F)}` +
+  tr('translate', ['0 -24', '0 -24', '0 0', '0 0'], [0, F, F + 0.45, TOTAL]) + `</rect>` +
+  `<rect x="0" y="${H - BAR}" width="${W}" height="${BAR}" fill="#000" opacity="0">${show(F)}` +
+  tr('translate', ['0 24', '0 24', '0 0', '0 0'], [0, F, F + 0.45, TOTAL]) + `</rect>`;
+
+// Titre « NIVEAU 01 · TERMINÉ » encadré de filets et de losanges
+const TITLE_Y = 60;
+// Filets qui se déploient depuis le centre, terminés par un losange
+const ruleCentered = (dir) => {
+  const len = 210;
+  const x0 = CXF + dir * 150;
+  return `<g transform="translate(${x0} 0)"><g>${tr('scale', ['0 1', '0 1', '1 1', '1 1'], [0, F + 0.35, F + 0.9, TOTAL])}` +
+    `<rect x="${dir > 0 ? 0 : -len}" y="${TITLE_Y - 6}" width="${len}" height="1.5" fill="${C.muted}" opacity="0">${show(F + 0.35)}</rect></g></g>` +
+    `<g transform="translate(${x0 + dir * (len + 10)} ${TITLE_Y - 5}) rotate(45)"><rect x="-4" y="-4" width="8" height="8" fill="${WORDS[1].color}" opacity="0">${show(F + 0.85)}</rect></g>`;
 };
-const NAME1_Y = 128;
-const NAME2_Y = 206;
-const names = dropWord(WORDS[0].label, NAME1_Y, WORDS[0].color, F + 0.45) +
-  dropWord(WORDS[1].label, NAME2_Y, WORDS[1].color, F + 1.1);
+const title = ruleCentered(-1) + ruleCentered(1) +
+  `<text x="${CXF}" y="${TITLE_Y}" class="title" opacity="0">${show(F + 0.3)}` +
+  `NIVEAU 01 <tspan fill="${C.snake}">·</tspan> TERMINÉ` +
+  anim('letter-spacing', [16, 16, 7, 7], [0, F + 0.3, F + 0.9, TOTAL]) + `</text>`;
 
-// Confettis : jaillissent du centre puis retombent en tournoyant
-const CONFETTI_T = F + 2.05;
-const palette = [WORDS[0].color, WORDS[1].color, C.snake, C.text];
-let confetti = '';
-for (let i = 0; i < 46; i++) {
-  const dx = Math.round((rand() - 0.5) * 1000);
-  const up = -Math.round(50 + rand() * 110);
-  const down = Math.round(170 + rand() * 120);
-  const t = CONFETTI_T + rand() * 0.15;
-  const w = 6 + Math.round(rand() * 6);
-  const spin = (rand() < 0.5 ? -1 : 1) * (360 + Math.round(rand() * 360));
-  confetti += `<g transform="translate(${W / 2} ${NAME1_Y + 30})"><g opacity="0">` +
-    anim('opacity', [0, 0, 1, 1, 0, 0], [0, t, t + 0.05, t + 1.6, t + 2.1, TOTAL]) +
-    tr('translate', ['0 0', '0 0', `${Math.round(dx * 0.55)} ${up}`, `${dx} ${down}`, `${dx} ${down}`], [0, t, t + 0.45, t + 2.1, TOTAL]) +
-    `<rect x="${-w / 2}" y="-3" width="${w}" height="6" rx="1.5" fill="${palette[i % palette.length]}">` +
-    `<animateTransform attributeName="transform" type="rotate" values="0;${spin}" dur="1.4s" repeatCount="indefinite"/></rect></g></g>`;
+// Nom : tracé au trait comme une signature, puis rempli, puis reflet lumineux
+const NAME1_Y = 132;
+const NAME2_Y = 202;
+const nameLine = (label, y, color, t) =>
+  `<text x="${CXF}" y="${y}" class="name" fill="${color}" fill-opacity="0" stroke="${color}" stroke-width="1.6" stroke-dasharray="420" stroke-dashoffset="420" opacity="0">` +
+  show(t) +
+  anim('stroke-dashoffset', [420, 420, 0, 0], [0, t, t + 1.0, TOTAL]) +
+  anim('fill-opacity', [0, 0, 1, 1], [0, t + 0.75, t + 1.15, TOTAL]) +
+  anim('stroke-opacity', [1, 1, 0, 0], [0, t + 0.9, t + 1.3, TOTAL]) +
+  `${label}</text>`;
+const names = nameLine(WORDS[0].label, NAME1_Y, WORDS[0].color, F + 0.55) +
+  nameLine(WORDS[1].label, NAME2_Y, WORDS[1].color, F + 0.95);
+
+// Reflet : une bande claire inclinée traverse le nom (découpée sur les lettres)
+const nameClip = `<clipPath id="nameclip">` +
+  `<text x="${CXF}" y="${NAME1_Y}" class="name">${WORDS[0].label}</text>` +
+  `<text x="${CXF}" y="${NAME2_Y}" class="name">${WORDS[1].label}</text></clipPath>`;
+const sweep = (t) => `<rect x="-120" y="70" width="70" height="160" fill="#FFFFFF" opacity="0" transform="skewX(-20)">` +
+  anim('opacity', [0, 0, 0.55, 0.55, 0, 0], [0, t, t + 0.05, t + 0.75, t + 0.8, TOTAL]) +
+  `<animate attributeName="x" values="-120;-120;1400;1400" keyTimes="${[0, t, t + 0.8, TOTAL].map(kt).join(';')}" ${loop}/></rect>`;
+const shine = `<g clip-path="url(#nameclip)">${sweep(F + 2.3)}${sweep(F + 4.9)}</g>`;
+
+// Cadre : quatre équerres qui s'écartent depuis le nom
+const FRAME = { x: 410, top: 84, bottom: 222 };
+const bracket = (sx, sy) => {
+  const x = CXF + sx * FRAME.x;
+  const y = sy < 0 ? FRAME.top : FRAME.bottom;
+  const l = 22;
+  const from = `${-sx * 40} ${-sy * 10}`;
+  return `<g transform="translate(${x} ${y})"><g opacity="0">${show(F + 1.4)}` +
+    tr('translate', [from, from, '0 0', '0 0'], [0, F + 1.4, F + 1.8, TOTAL]) +
+    `<path d="M${-sx * l} 0 L0 0 L0 ${-sy * l}" fill="none" stroke="${C.text}" stroke-width="2" stroke-linecap="round"/></g></g>`;
+};
+const frame = bracket(-1, -1) + bracket(1, -1) + bracket(1, 1) + bracket(-1, 1);
+
+// Étincelles qui scintillent autour du nom
+const sparkle = (x, y, s, t, color) =>
+  `<g transform="translate(${x} ${y})"><g opacity="0">` +
+  anim('opacity', [0, 0, 1, 0, 0], [0, t, t + 0.3, t + 0.7, TOTAL]) +
+  tr('scale', [0, 0, s, 0, 0], [0, t, t + 0.3, t + 0.7, TOTAL]) +
+  `<path d="M0 -10 L2.4 -2.4 L10 0 L2.4 2.4 L0 10 L-2.4 2.4 L-10 0 L-2.4 -2.4 Z" fill="${color}"/></g></g>`;
+let sparkles = '';
+const SPOTS = [[-380, 96], [372, 104], [-300, 220], [320, 214], [-180, 78], [210, 82], [-420, 170], [430, 166], [0, 236], [-90, 240], [96, 72]];
+for (let wave = 0; wave < 3; wave++) {
+  SPOTS.forEach(([dx, y], i) => {
+    const t = F + 1.7 + wave * 1.4 + i * 0.11;
+    if (t + 0.7 < END) sparkles += sparkle(CXF + dx, y, 0.7 + ((i * 7) % 5) / 10, t, i % 3 ? WORDS[1].color : C.text);
+  });
 }
 
-// Bilan + étoiles
-const STATS_Y = 268;
-const stats = `<text x="${W / 2}" y="${STATS_Y}" class="stats" opacity="0">${appear(F + 2.3)}` +
-  `SCORE <tspan fill="${C.text}">${targets.length * POINTS}</tspan>   ·   LETTRES <tspan fill="${C.text}">${targets.length}/${targets.length}</tspan>   ·   PRÉCISION <tspan fill="${C.text}">100 %</tspan></text>`;
+// Bilan en trois colonnes, score qui défile jusqu'au total
+const STATS_Y = 270;
+const COLS3 = [CXF - 200, CXF, CXF + 200];
+const stat = (x, label, valueSvg, t) =>
+  `<g opacity="0">${show(t)}${valueSvg}<text x="${x}" y="${STATS_Y + 20}" class="label">${label}</text></g>`;
+let scoreRoll = '';
+const STEPS = 14;
+for (let i = 0; i <= STEPS; i++) {
+  const t0 = F + 2.0 + i * 0.05;
+  const last = i === STEPS;
+  const v = Math.round((targets.length * POINTS * i) / STEPS);
+  scoreRoll += `<text x="${COLS3[0]}" y="${STATS_Y}" class="value" opacity="0">` +
+    `<animate attributeName="opacity" calcMode="discrete" values="0;1;${last ? 1 : 0};0" keyTimes="${[0, t0, last ? END : t0 + 0.05, END + 0.2].map(kt).join(';')}" ${loop}/>${v}</text>`;
+}
+const stats =
+  stat(COLS3[0], 'SCORE', scoreRoll, F + 1.95) +
+  stat(COLS3[1], 'LETTRES', `<text x="${COLS3[1]}" y="${STATS_Y}" class="value">${targets.length}/${targets.length}</text>`, F + 2.15) +
+  stat(COLS3[2], 'PRÉCISION', `<text x="${COLS3[2]}" y="${STATS_Y}" class="value">100 %</text>`, F + 2.35) +
+  [-100, 100].map((dx) => `<rect x="${CXF + dx}" y="${STATS_Y - 20}" width="1" height="44" fill="#3A3A3C" opacity="0">${show(F + 2.1)}</rect>`).join('');
+
+// Trois étoiles qui s'allument
 const starPath = (R, r) => Array.from({ length: 10 }, (_, i) => {
   const a = -Math.PI / 2 + (i * Math.PI) / 5;
   const rad = i % 2 ? r : R;
   return `${(Math.cos(a) * rad).toFixed(1)} ${(Math.sin(a) * rad).toFixed(1)}`;
 }).join(' L');
 let stars = '';
-[-46, 0, 46].forEach((dx, i) => {
-  const t = F + 2.6 + i * 0.18;
-  stars += `<g transform="translate(${W / 2 + dx} ${STATS_Y + 36})"><g opacity="0">${appear(t)}` +
-    tr('scale', [0, 0, 1.45, 0.9, 1, 1], [0, t, t + 0.16, t + 0.26, t + 0.34, TOTAL]) +
-    `<path d="M${starPath(15, 6.5)} Z" fill="${WORDS[1].color}"/></g></g>`;
+[-30, 0, 30].forEach((dx, i) => {
+  const t = F + 2.7 + i * 0.2;
+  stars += `<g transform="translate(${CXF + dx} ${TITLE_Y - 25})"><g opacity="0">${show(t)}` +
+    tr('scale', [0, 0, 1.6, 0.9, 1, 1], [0, t, t + 0.16, t + 0.26, t + 0.34, TOTAL]) +
+    `<path d="M${starPath(9, 4)} Z" fill="${WORDS[1].color}"/></g></g>`;
 });
 
-// Compte à rebours avant la partie suivante
+// Compte à rebours discret dans la bande noire du bas
 let countdown = '';
 [3, 2, 1].forEach((n, i) => {
   const t = F + 4.4 + i * 0.95;
-  countdown += `<text x="${W - PAD_X}" y="${H - 22}" class="next" text-anchor="end" opacity="0">` +
+  countdown += `<text x="${W - 60}" y="${H - 8}" class="next" text-anchor="end" opacity="0">` +
     anim('opacity', [0, 0, 1, 1, 0, 0], [0, t, t + 0.05, t + 0.8, t + 0.9, TOTAL]) +
     `NOUVELLE PARTIE DANS <tspan fill="${C.snake}">${n}</tspan></text>`;
 });
+const credit = `<text x="60" y="${H - 8}" class="next" text-anchor="start" opacity="0">${show(F + 0.6)}THEMAGICIAN24 · GITHUB</text>`;
 
-const finale = `${panel}${confetti}${badge}${names}${stats}${stars}${countdown}`;
+const finale = `<defs>${nameClip}</defs>${panel}${rays}${frame}${title}${stars}${names}${shine}${sparkles}${stats}${bars}${countdown}${credit}`;
 const finaleLabel = `<text x="${W / 2}" y="${midY - 30}" class="hud" opacity="0">LE SERPENT A TOUT COLLECTÉ` +
   anim('opacity', [0, 0, 1, 1, 0, 0], [0, REVEAL + 0.2, REVEAL + 0.4, FINALE - 0.2, FINALE, TOTAL]) + `</text>`;
 
@@ -335,9 +389,10 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
     .pts { font-size: 13px; font-weight: 800; }
     .banner { font-size: 14px; font-weight: 800; letter-spacing: 2px; }
     .slot { font-size: 22px; font-weight: 800; }
-    .big { font-size: 62px; font-weight: 800; }
-    .badge { font-size: 16px; font-weight: 800; letter-spacing: 4px; fill: ${C.ink}; }
-    .stats { font-size: 15px; font-weight: 700; letter-spacing: 2px; fill: ${C.muted}; }
+    .title { font-size: 15px; font-weight: 800; fill: ${C.text}; }
+    .name { font-size: 64px; font-weight: 800; letter-spacing: 10px; }
+    .value { font-size: 24px; font-weight: 800; fill: ${C.text}; }
+    .label { font-size: 11px; font-weight: 700; letter-spacing: 3px; fill: ${C.muted}; }
     .next { font-size: 13px; font-weight: 700; letter-spacing: 2px; fill: ${C.muted}; }
     @media (prefers-reduced-motion: reduce) { .seg { display: none; } }
   </style>
