@@ -41,10 +41,7 @@
 </p>
 
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Themagician24/Themagician24/output/github-snake-dark.svg" />
-    <img src="https://raw.githubusercontent.com/Themagician24/Themagician24/output/github-snake.svg" alt="Contributions" />
-  </picture>
+  <img src="assets/snake-letters.svg" width="100%" alt="Un serpent parcourt l'alphabet et révèle JEFF BIZO THEMAGICIAN 24" />
 </p>
 
 <!-- 🌐 MES SITES : décommente et remplace quand tu as tes liens
