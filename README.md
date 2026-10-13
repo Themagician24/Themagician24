@@ -13,7 +13,7 @@
 <h3 align="center">Mon studio IA.</h3>
 
 <p align="center">
-  <img src="assets/ai-studio.svg" width="100%" alt="Claude Code, Claude, Gemini, Figma, Gamma, Canva, Notion AI, Descript" />
+  <img src="assets/ai-studio.svg" width="100%" alt="Claude Code, Claude, CodeRabbit, Gemini, Figma, Gamma, Canva, Notion AI, Descript" />
 </p>
 
 <br />

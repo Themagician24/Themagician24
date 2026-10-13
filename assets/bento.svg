@@ -42,7 +42,7 @@
     <text class="label" x="60" y="386">Intelligence artificielle</text>
     <text class="big" x="60" y="466">L’IA, mon</text>
     <text class="big" x="60" y="518" style="fill:url(#violet)">coéquipier.</text>
-    <text class="small" x="60" y="580">Claude Code · Claude · Gemini</text>
+    <text class="small" x="60" y="580">Claude Code · Claude · CodeRabbit · Gemini</text>
   </g>
 
   <!-- Hors écran -->
