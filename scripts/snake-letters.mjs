@@ -79,7 +79,7 @@ const TRAVEL = (N - 1) * STEP;
 const REVEAL = TRAVEL + 0.35;              // le serpent s'arrête, le nom se lit
 const WAVE = 0.07;
 const FINALE = REVEAL + BODY * WAVE + 0.9; // le nom s'affiche en grand
-const TOTAL = FINALE + 4.5;
+const TOTAL = FINALE + 7.6;
 targets.forEach((tg) => { tg.t = tg.i * STEP; });
 
 const kt = (t) => (Math.min(Math.max(t, 0), TOTAL) / TOTAL).toFixed(4);
@@ -235,20 +235,99 @@ const midY = cy(FINAL_ROW);
 const fadeGrid = anim('opacity', [1, 1, 0.07, 0.07, 1], [0, REVEAL - 0.2, REVEAL + 0.3, TOTAL - 0.3, TOTAL]);
 const flash = `<rect width="${W}" height="${H}" rx="28" fill="${C.text}" opacity="0">` +
   anim('opacity', [0, 0, 0.16, 0, 0, 0.12, 0, 0], [0, REVEAL, REVEAL + 0.06, REVEAL + 0.4, FINALE, FINALE + 0.06, FINALE + 0.4, TOTAL]) + `</rect>`;
-const finale = `<g opacity="0">` +
-  anim('opacity', [0, 0, 1, 1, 0], [0, FINALE, FINALE + 0.4, TOTAL - 0.4, TOTAL]) +
-  `<text x="${W / 2}" y="${midY - 58}" class="hud">NIVEAU TERMINÉ · ${targets.length * POINTS} PTS · SANS FAUTE</text>` +
-  `<g transform="translate(${W / 2} ${midY + 6})"><text class="big" fill="${WORDS[0].color}">${WORDS[0].label}` +
-  tr('scale', [0.5, 0.5, 1.1, 1, 1], [0, FINALE, FINALE + 0.3, FINALE + 0.5, TOTAL]) + `</text></g>` +
-  `<g transform="translate(${W / 2} ${midY + 70})"><text class="big" fill="${WORDS[1].color}">${WORDS[1].label}` +
-  tr('scale', [0.5, 0.5, 0.5, 1.1, 1, 1], [0, FINALE, FINALE + 0.15, FINALE + 0.45, FINALE + 0.65, TOTAL]) + `</text></g>` +
-  `</g>`;
+// Écran de victoire : panneau opaque, tampon « NIVEAU TERMINÉ », nom lettre par lettre,
+// soulignés, confettis, étoiles, bilan et compte à rebours avant la partie suivante.
+const F = FINALE;
+const END = TOTAL - 0.35;
+const appear = (t0, t1 = END) => anim('opacity', [0, 0, 1, 1, 0, 0], [0, t0, t0 + 0.2, t1, t1 + 0.25, TOTAL]);
+
+const panel = `<rect width="${W}" height="${H}" rx="28" fill="${C.bg}" opacity="0">` +
+  anim('opacity', [0, 0, 1, 1, 0], [0, F, F + 0.3, END, TOTAL]) + `</rect>`;
+
+const BADGE_Y = 54;
+const badge = `<g transform="translate(${W / 2} ${BADGE_Y})"><g opacity="0">${appear(F + 0.1)}` +
+  tr('scale', [2.4, 2.4, 0.92, 1.04, 1, 1], [0, F + 0.1, F + 0.32, F + 0.42, F + 0.5, TOTAL]) +
+  `<rect x="-150" y="-19" width="300" height="38" rx="19" fill="${C.snake}"/>` +
+  `<text y="6" class="badge">NIVEAU TERMINÉ</text></g></g>`;
+
+const ADV = 44;
+const dropWord = (label, y, color, start) => {
+  let out = '';
+  const x0 = W / 2 - ((label.length - 1) * ADV) / 2;
+  [...label].forEach((ch, i) => {
+    if (ch === ' ') return;
+    const t = start + i * 0.06;
+    const wave = F + 3.3 + i * 0.05 + (y > 200 ? 0.25 : 0);
+    out += `<g transform="translate(${x0 + i * ADV} ${y})"><g opacity="0">${appear(t)}` +
+      tr('translate', ['0 -46', '0 -46', '0 7', '0 -3', '0 0', '0 0', '0 -12', '0 0', '0 0'],
+        [0, t, t + 0.22, t + 0.32, t + 0.4, wave, wave + 0.12, wave + 0.26, TOTAL]) +
+      `<text class="big" fill="${color}">${ch}</text></g></g>`;
+  });
+  // Soulignement qui se trace depuis le centre
+  const half = ((label.length - 1) * ADV) / 2 + 22;
+  const u = start + label.length * 0.06;
+  out += `<rect x="${W / 2}" y="${y + 16}" width="0" height="4" rx="2" fill="${color}" opacity="0">` +
+    appear(u) + anim('width', [0, 0, half * 2, half * 2], [0, u, u + 0.35, TOTAL]) +
+    anim('x', [W / 2, W / 2, W / 2 - half, W / 2 - half], [0, u, u + 0.35, TOTAL]) + `</rect>`;
+  return out;
+};
+const NAME1_Y = 128;
+const NAME2_Y = 206;
+const names = dropWord(WORDS[0].label, NAME1_Y, WORDS[0].color, F + 0.45) +
+  dropWord(WORDS[1].label, NAME2_Y, WORDS[1].color, F + 1.1);
+
+// Confettis : jaillissent du centre puis retombent en tournoyant
+const CONFETTI_T = F + 2.05;
+const palette = [WORDS[0].color, WORDS[1].color, C.snake, C.text];
+let confetti = '';
+for (let i = 0; i < 46; i++) {
+  const dx = Math.round((rand() - 0.5) * 1000);
+  const up = -Math.round(50 + rand() * 110);
+  const down = Math.round(170 + rand() * 120);
+  const t = CONFETTI_T + rand() * 0.15;
+  const w = 6 + Math.round(rand() * 6);
+  const spin = (rand() < 0.5 ? -1 : 1) * (360 + Math.round(rand() * 360));
+  confetti += `<g transform="translate(${W / 2} ${NAME1_Y + 30})"><g opacity="0">` +
+    anim('opacity', [0, 0, 1, 1, 0, 0], [0, t, t + 0.05, t + 1.6, t + 2.1, TOTAL]) +
+    tr('translate', ['0 0', '0 0', `${Math.round(dx * 0.55)} ${up}`, `${dx} ${down}`, `${dx} ${down}`], [0, t, t + 0.45, t + 2.1, TOTAL]) +
+    `<rect x="${-w / 2}" y="-3" width="${w}" height="6" rx="1.5" fill="${palette[i % palette.length]}">` +
+    `<animateTransform attributeName="transform" type="rotate" values="0;${spin}" dur="1.4s" repeatCount="indefinite"/></rect></g></g>`;
+}
+
+// Bilan + étoiles
+const STATS_Y = 268;
+const stats = `<text x="${W / 2}" y="${STATS_Y}" class="stats" opacity="0">${appear(F + 2.3)}` +
+  `SCORE <tspan fill="${C.text}">${targets.length * POINTS}</tspan>   ·   LETTRES <tspan fill="${C.text}">${targets.length}/${targets.length}</tspan>   ·   PRÉCISION <tspan fill="${C.text}">100 %</tspan></text>`;
+const starPath = (R, r) => Array.from({ length: 10 }, (_, i) => {
+  const a = -Math.PI / 2 + (i * Math.PI) / 5;
+  const rad = i % 2 ? r : R;
+  return `${(Math.cos(a) * rad).toFixed(1)} ${(Math.sin(a) * rad).toFixed(1)}`;
+}).join(' L');
+let stars = '';
+[-46, 0, 46].forEach((dx, i) => {
+  const t = F + 2.6 + i * 0.18;
+  stars += `<g transform="translate(${W / 2 + dx} ${STATS_Y + 36})"><g opacity="0">${appear(t)}` +
+    tr('scale', [0, 0, 1.45, 0.9, 1, 1], [0, t, t + 0.16, t + 0.26, t + 0.34, TOTAL]) +
+    `<path d="M${starPath(15, 6.5)} Z" fill="${WORDS[1].color}"/></g></g>`;
+});
+
+// Compte à rebours avant la partie suivante
+let countdown = '';
+[3, 2, 1].forEach((n, i) => {
+  const t = F + 4.4 + i * 0.95;
+  countdown += `<text x="${W - PAD_X}" y="${H - 22}" class="next" text-anchor="end" opacity="0">` +
+    anim('opacity', [0, 0, 1, 1, 0, 0], [0, t, t + 0.05, t + 0.8, t + 0.9, TOTAL]) +
+    `NOUVELLE PARTIE DANS <tspan fill="${C.snake}">${n}</tspan></text>`;
+});
+
+const finale = `${panel}${confetti}${badge}${names}${stats}${stars}${countdown}`;
 const finaleLabel = `<text x="${W / 2}" y="${midY - 30}" class="hud" opacity="0">LE SERPENT A TOUT COLLECTÉ` +
   anim('opacity', [0, 0, 1, 1, 0, 0], [0, REVEAL + 0.2, REVEAL + 0.4, FINALE - 0.2, FINALE, TOTAL]) + `</text>`;
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="Mini-jeu de snake : le serpent attrape une à une les lettres de JEFF BIZO THEMAGICIAN24, son corps épelle le nom, puis le nom complet s'affiche.">
   <style>
-    text { font-family: "SF Mono", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 600; text-anchor: middle; }
+    text { font-family: "SF Mono", ui-monospace, Menlo, Consolas, "Liberation Mono", monospace; font-size: 15px; font-weight: 600; }
+    text:not([text-anchor]) { text-anchor: middle; }
     .filler text { fill: ${C.filler}; }
     .food { font-weight: 800; fill: ${C.target}; }
     .seg-t { font-size: 14px; font-weight: 800; fill: ${C.ink}; }
@@ -256,9 +335,13 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
     .pts { font-size: 13px; font-weight: 800; }
     .banner { font-size: 14px; font-weight: 800; letter-spacing: 2px; }
     .slot { font-size: 22px; font-weight: 800; }
-    .big { font-size: 56px; font-weight: 800; letter-spacing: 6px; }
+    .big { font-size: 62px; font-weight: 800; }
+    .badge { font-size: 16px; font-weight: 800; letter-spacing: 4px; fill: ${C.ink}; }
+    .stats { font-size: 15px; font-weight: 700; letter-spacing: 2px; fill: ${C.muted}; }
+    .next { font-size: 13px; font-weight: 700; letter-spacing: 2px; fill: ${C.muted}; }
     @media (prefers-reduced-motion: reduce) { .seg { display: none; } }
   </style>
+  <defs><clipPath id="card"><rect width="${W}" height="${H}" rx="28"/></clipPath></defs>
   <rect width="${W}" height="${H}" rx="28" fill="${C.bg}"/>
   <g>${shake}
     ${score}${counter}${record}${progress}
@@ -268,8 +351,8 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" 
     ${snake}
     ${finaleLabel}
   </g>
+  <g clip-path="url(#card)">${finale}</g>
   ${flash}
-  ${finale}
 </svg>
 `;
 
