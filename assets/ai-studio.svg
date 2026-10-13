@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-label="Mes IA au quotidien : Claude Code, Claude, Gemini, Figma, Gamma, Canva, Notion AI, Descript.">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+    .t { opacity: 0; animation: up .9s cubic-bezier(.22, 1, .36, 1) forwards; }
+    .a1 { animation-delay: .05s } .a2 { animation-delay: .15s } .a3 { animation-delay: .25s } .a4 { animation-delay: .35s }
+    .a5 { animation-delay: .45s } .a6 { animation-delay: .55s } .a7 { animation-delay: .65s } .a8 { animation-delay: .75s }
+    @keyframes up { from { opacity: 0; transform: translateY(20px) } to { opacity: 1; transform: none } }
+    @media (prefers-reduced-motion: reduce) { .t { animation: none; opacity: 1 } }
+    .card { fill: #1C1C1E; }
+    .name { font-size: 30px; font-weight: 700; letter-spacing: -.6px; fill: #F5F5F7; }
+    .use { font-size: 17px; font-weight: 500; fill: #86868B; }
+  </style>
+
+  <rect width="1200" height="360" rx="32" fill="#000"/>
+
+  <g class="t a1"><rect class="card" x="20" y="20" width="275" height="150" rx="22"/>
+    <circle cx="54" cy="56" r="8" fill="#D97757"/>
+    <text class="name" x="46" y="118">Claude Code</text><text class="use" x="46" y="148">Développement</text></g>
+  <g class="t a2"><rect class="card" x="315" y="20" width="275" height="150" rx="22"/>
+    <circle cx="349" cy="56" r="8" fill="#F0A47A"/>
+    <text class="name" x="341" y="118">Claude</text><text class="use" x="341" y="148">Réflexion &amp; rédaction</text></g>
+  <g class="t a3"><rect class="card" x="610" y="20" width="275" height="150" rx="22"/>
+    <circle cx="644" cy="56" r="8" fill="#4C8DF6"/>
+    <text class="name" x="636" y="118">Gemini</text><text class="use" x="636" y="148">IA dans mes applis</text></g>
+  <g class="t a4"><rect class="card" x="905" y="20" width="275" height="150" rx="22"/>
+    <circle cx="939" cy="56" r="8" fill="#A259FF"/>
+    <text class="name" x="931" y="118">Figma</text><text class="use" x="931" y="148">Design d’interfaces</text></g>
+
+  <g class="t a5"><rect class="card" x="20" y="190" width="275" height="150" rx="22"/>
+    <circle cx="54" cy="226" r="8" fill="#BF5AF2"/>
+    <text class="name" x="46" y="288">Gamma</text><text class="use" x="46" y="318">Présentations</text></g>
+  <g class="t a6"><rect class="card" x="315" y="190" width="275" height="150" rx="22"/>
+    <circle cx="349" cy="226" r="8" fill="#00C4CC"/>
+    <text class="name" x="341" y="288">Canva</text><text class="use" x="341" y="318">Visuels</text></g>
+  <g class="t a7"><rect class="card" x="610" y="190" width="275" height="150" rx="22"/>
+    <circle cx="644" cy="226" r="8" fill="#F5F5F7"/>
+    <text class="name" x="636" y="288">Notion AI</text><text class="use" x="636" y="318">Organisation</text></g>
+  <g class="t a8"><rect class="card" x="905" y="190" width="275" height="150" rx="22"/>
+    <circle cx="939" cy="226" r="8" fill="#2997FF"/>
+    <text class="name" x="931" y="288">Descript</text><text class="use" x="931" y="318">Montage vidéo</text></g>
+</svg>

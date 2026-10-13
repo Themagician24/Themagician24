@@ -8,7 +8,21 @@
   <img src="assets/bento.svg" width="100%" alt="Développement, RH & Paie, IA, hors écran" />
 </p>
 
-<!-- 🎬 VIDÉO DÉMO : glisse ton .mp4 ici depuis l'éditeur web de GitHub -->
+<br />
+
+<h3 align="center">Mon studio IA.</h3>
+
+<p align="center">
+  <img src="assets/ai-studio.svg" width="100%" alt="Claude Code, Claude, Gemini, Figma, Gamma, Canva, Notion AI, Descript" />
+</p>
+
+<br />
+
+<h3 align="center">Les idées prennent vie.</h3>
+
+<p align="center">
+  <img src="assets/showreel.webp" width="100%" alt="" />
+</p>
 
 <br />
 
@@ -58,4 +72,3 @@
   &nbsp;
   <a href="mailto:jeffbizo.dev@gmail.com"><img src="assets/btn-mail.svg" height="52" alt="E-mail" /></a>
 </p>
-# Themagician24
