@@ -22,7 +22,7 @@
 
 <!-- video:start -->
 <p align="center">
-  <img src="assets/videos/fats-angel.webp" width="100%" alt="" />
+  <img src="assets/videos/pretre.webp" width="100%" alt="" />
 </p>
 <!-- video:end -->
 
