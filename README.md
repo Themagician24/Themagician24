@@ -22,7 +22,7 @@
 
 <!-- video:start -->
 <p align="center">
-  <img src="assets/videos/baleine.webp" width="100%" alt="" />
+  <img src="assets/videos/eronia-angel.webp" width="100%" alt="" />
 </p>
 <!-- video:end -->
 
